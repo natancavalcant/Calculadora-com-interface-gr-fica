@@ -418,14 +418,12 @@ public class GUI extends javax.swing.JFrame {
     }//GEN-LAST:event_botaoDivActionPerformed
 
     private void botaoIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoIgualActionPerformed
-       resultado = new Calculadora(texto.getText()).calcular();
-           result.setText(""+resultado);
-        /*try{
+       try{
            resultado = new Calculadora(texto.getText()).calcular();
            result.setText(""+resultado);
        }catch (Exception e){
            JOptionPane.showMessageDialog(null, e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-       }*/
+       }
     }//GEN-LAST:event_botaoIgualActionPerformed
 
     private void botaoCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCActionPerformed

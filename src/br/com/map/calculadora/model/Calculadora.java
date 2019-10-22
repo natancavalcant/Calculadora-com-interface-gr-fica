@@ -42,7 +42,7 @@ public class Calculadora{
                     break;
                 }
             }
-            System.out.println("----");
+            
         }
         for(i = 0; i < ArrayOp.size(); i++){
             for(j = 0; j < parcialResult.size(); j++){

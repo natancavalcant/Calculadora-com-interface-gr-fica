@@ -8,7 +8,7 @@
   </information>
   <resources>
     <j2se version="1.6+" href="http://java.sun.com/products/autodl/j2se"/>
-    <jar href="Calculadora.jar" size="20380" download="eager" />
+    <jar href="Calculadora.jar" size="20465" download="eager" />
   </resources>
   <applet-desc  width="800" height="600" main-class="br.com.map.calculadora.gui.GUI"  name="Calculadora" >
   </applet-desc>
