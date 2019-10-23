@@ -11,55 +11,51 @@ import java.util.regex.*;
  */
 
 public class Calculadora{
-    private String[] stringDividida;
+    private String[] stringSeparated;
     private List<String> ArrayOp;
-    private List<Float> parcialResult;
+    private List<Float> partialResult;
     private float result;
     
     public Calculadora(String s)throws Exception{
         result = 0;
         ArrayOp = new ArrayList<>();        
-        stringDividida = s.split("[+|/|*|-]");
-        parcialResult = parseFloat(stringDividida);
+        stringSeparated = s.split("[+]|[/]|[*]|[-]");
         Pattern p = Pattern.compile("[+|/|*|-]");
         Matcher m = p.matcher(s);
         while(m.find()){
             ArrayOp.add(m.group());
         }
+        partialResult = parseFloat(stringSeparated);
         
     }
     
     public float calcular()throws Exception{
         int i, j;
-        for(i = 0; i < ArrayOp.size(); i++){
-            for(j = 0; j < parcialResult.size(); j++){
-                if(ArrayOp.get(i).equals("*") || ArrayOp.get(i).equals("/")){
-                    result = operacao(ArrayOp.get(i), parcialResult.get(j), parcialResult.get(j+1));
-                    parcialResult.set(j, result);
-                    parcialResult.remove(j+1);
-                    break;
-                }else{
-                    break;
-                }
-            }
-            
-        }
-        for(i = 0; i < ArrayOp.size(); i++){
-            for(j = 0; j < parcialResult.size(); j++){
-                if(ArrayOp.get(i).equals("-") || ArrayOp.get(i).equals("+")){
-                    result = operacao(ArrayOp.get(i), parcialResult.get(j), parcialResult.get(j+1));
-                    parcialResult.set(j, result);
-                    parcialResult.remove(j+1);
-                    break;
-                }
-                else{
-                    break;
-                }
+        for(i=0; i < ArrayOp.size();i++){
+            String op = ArrayOp.get(i);
+            if(op.equals("*") || op.equals("/")){
+                result = operacao(op, partialResult.get(i), partialResult.get(i+1));
+                partialResult.set(i, result);
+                partialResult.remove(i+1);
+                ArrayOp.remove(i);
+                i--;                
             }
         }
-        //result = parcialResult.get(0);
+        for(i=0; i < ArrayOp.size();i++){
+            String op = ArrayOp.get(i);
+            if(op.equals("+") || op.equals("-")){
+                result = operacao(op, partialResult.get(i), partialResult.get(i+1));
+                partialResult.set(i, result);
+                partialResult.remove(i+1);
+                ArrayOp.remove(i);
+                i--;                
+            }
+        }
+        
         return result;
     }
+        
+    
     
     public float operacao(String s, float num1, float num2)throws Exception{
         switch(s){
@@ -79,8 +75,11 @@ public class Calculadora{
     
     private List<Float> parseFloat(String[] s)throws Exception{
         List<Float> L = new ArrayList<>();
+        int i;
+        
         for(String str : s){
             L.add(Float.parseFloat(str));
+            
         }
         return L;
     }

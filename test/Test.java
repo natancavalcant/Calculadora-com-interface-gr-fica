@@ -18,7 +18,7 @@ public class Test {
     public static void main(String[] args){
         String[] stringDividida;
         List<String> ArrayOp;
-        String s = "20*2/2+2-1";
+        String s = "3+-6+-6";
         
         //Calculadora c = new Calculadora(s);
         
@@ -41,3 +41,4 @@ public class Test {
         }
     }
 }
+
